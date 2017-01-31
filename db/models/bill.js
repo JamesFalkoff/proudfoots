@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var findOrCreate = require('mongoose-findorcreate');
 
 var billSchema = mongoose.Schema({
   bill_id: {
@@ -41,9 +42,11 @@ var billSchema = mongoose.Schema({
   keywords_generated: Array,
 
   //add createdAt and updatedAt fields to schema
-  timestamps: true
+  // timestamps: true
 
 });
+
+billSchema.plugin(findOrCreate);
 
 var BillModel = mongoose.model('Bill', billSchema);
 
